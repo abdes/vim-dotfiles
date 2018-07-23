@@ -1,14 +1,16 @@
+let mapleader=" "
 filetype on
 filetype plugin on
+set noswapfile
 syntax on
 colorscheme Tomorrow-Night
 set guifont=Menlo\ Regular:h18
 set colorcolumn=90
 set number
-let mapleader=" "
 map <leader>s :source ~/.vimrc<CR>
+set autowrite     " Automatically :write before running commands
 
-" Smart Defaults
+" Smart Defaults 
 
 " Keep more info in memory to speed things up
 set hidden
@@ -28,8 +30,7 @@ autocmd BufWritePre * :s/\s\+$//e
 
 " When running a search, get Vim to highlight found words:
 set hlsearch
-" Ability to cancel a search with Escape:
-nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
+set incsearch     " do incremental searching
 
 " When selecting a parenthesis it will highlight the one matching:
 set showmatch
@@ -66,7 +67,7 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
 
 " Lightline configuration
-set laststatus=2
+set laststatus=2  " Always display the status line
 set noshowmode
 let g:lightline = {
       \ 'colorscheme': 'wombat',
@@ -74,4 +75,16 @@ let g:lightline = {
 
 " GitGutter
 let g:gitgutter_sign_column_always=1
+
+" --------------------------------------------------------------------------------------
+"  Split screen
+" --------------------------------------------------------------------------------------
+" Split screen navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+" More natural splits
+set splitbelow
+set splitright
 
